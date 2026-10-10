@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who's not follow me?</title>
+<meta name="description" content="Sube tu exportación de Instagram y mira a quién sigues que no te sigue de vuelta.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Who's <em>not</em> follow me?</h1>
+    <p class="lead">Sube el archivo que Instagram te da con tus seguidores y seguidos, y verás a quién sigues tú sin que te siga de vuelta. No pide tu contraseña y nada sale de tu navegador.</p>
+  </header>
+
+  <div class="drop" id="drop">
+    <p><strong>Suelta aquí tu archivo de Instagram</strong>
+      <small>El .zip completo, o los archivos <code>followers_1</code> y <code>following</code> (JSON o HTML).</small></p>
+    <button class="btn" id="pick" type="button">Elegir archivo</button>
+    <input id="file" type="file" multiple accept=".zip,.json,.html,.htm" hidden>
+  </div>
+
+  <div id="status" class="msg">Estás viendo cuentas de ejemplo. Sube tu archivo para ver las tuyas.</div>
+
+  <details id="how">
+    <summary>Cómo consigo ese archivo en Instagram</summary>
+    <ol>
+      <li>En la app, entra a tu perfil, abre el menú <b>☰</b> y toca <b>Centro de cuentas</b>.</li>
+      <li>Ve a <b>Tu información y permisos</b> y luego a <b>Exportar tu información</b> (en algunas versiones dice «Descargar tu información»).</li>
+      <li>Toca <b>Crear exportación</b>, elige tu cuenta y <b>Exportar al dispositivo</b>.</li>
+      <li>En <b>Personalizar información</b> deja marcado solo <b>Seguidores y seguidos</b>.</li>
+      <li>En <b>Intervalo de fechas</b> elige <b>Desde el principio</b>. En <b>Formato</b> elige <b>JSON</b>.</li>
+      <li>Toca <b>Iniciar exportación</b>. Instagram te avisa por correo cuando esté listo; suele tardar unos minutos.</li>
+      <li>Descarga el .zip y súbelo aquí arriba.</li>
+    </ol>
+    <p class="note">El paso 5 es el que más falla: si el intervalo no es «Desde el principio», la lista sale incompleta y aparecerán personas que sí te siguen. Los nombres de los menús cambian un poco según la versión de la app.</p>
+  </details>
+
+  <section id="result">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-k="no" aria-selected="true" type="button"><b id="c-no">0</b><span>No te siguen de vuelta</span></button>
+      <button class="tab" role="tab" data-k="fans" aria-selected="false" type="button"><b id="c-fans">0</b><span>Te siguen y tú no</span></button>
+      <button class="tab" role="tab" data-k="mut" aria-selected="false" type="button"><b id="c-mut">0</b><span>Se siguen mutuamente</span></button>
+    </div>
+    <div class="tools">
+      <input id="q" type="search" placeholder="Buscar usuario" aria-label="Buscar usuario">
+      <button class="btn ghost" id="toggle" type="button">Ver ocultas (0)</button>
+      <button class="btn ghost" id="copy" type="button">Copiar lista</button>
+    </div>
+    <ul class="list" id="list"></ul>
+    <p class="foot" id="foot"></p>
+  </section>
+
+  <footer class="thanks">
+    <p>Gracias a Jesús Pérez por crear esta página. Si te sirvió, síguelo en Instagram: <a href="https://www.instagram.com/jesu.perez10/" target="_blank" rel="noopener">@jesu.perez10</a></p>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
